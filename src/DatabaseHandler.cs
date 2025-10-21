@@ -181,7 +181,7 @@ namespace muNoteServer
 		/// <summary>
 		/// 노트 레코드 삭제.
 		/// </summary>
-		public async Task DestroyNoteAsync()
+		public async Task DeleteNoteAsync()
 		{
 			using var connection = await ConnectAsync();
 		}

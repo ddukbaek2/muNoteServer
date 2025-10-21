@@ -43,6 +43,8 @@ namespace muNoteServer
 		protected override async Task OnWillStartAsync()
 		{
 			await base.OnWillStartAsync();
+			
+			// 최초 실행시 테이블 미리 생성.
 			await DatabaseHandler.CreateUserTableAsync();
 			await DatabaseHandler.CreateWorkspaceTableAsync();
 			await DatabaseHandler.CreateNoteTableAsync();
