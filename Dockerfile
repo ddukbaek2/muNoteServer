@@ -15,3 +15,6 @@ COPY --from=build /app .
 ENV ASPNETCORE_ENVIRONMENT=Production
 EXPOSE 8080
 ENTRYPOINT ["dotnet", "muNoteServer.dll"]
+
+# 도커 컨테이너 실행 커맨드.
+# docker run --rm --publish 8080:8080 --volume ~/muNoteServer/data:/app/data muNoteServer:latest

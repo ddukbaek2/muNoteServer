@@ -1,6 +1,7 @@
 using Crockhead.Core;
 using Microsoft.Data.Sqlite;
 using System;
+using System.IO;
 using System.Threading.Tasks;
 
 
@@ -19,12 +20,16 @@ namespace muNoteServer
 		/// <summary>
 		/// 생성됨.
 		/// </summary>
-		public BaseDatabaseHandler(string databaseFileName = "local.db") : base()
+		public BaseDatabaseHandler(string databaseFilePath = "./local.db") : base()
 		{
-			if (string.IsNullOrWhiteSpace(databaseFileName))
-				databaseFileName = "local.db";
+			if (string.IsNullOrWhiteSpace(databaseFilePath))
+				databaseFilePath = "./local.db";
 
-			m_ConnectionString = $"Data Source={databaseFileName};Cache=Shared";
+			m_ConnectionString = $"Data Source={databaseFilePath};Cache=Shared";
+
+			var databaseDirectory = Path.GetDirectoryName(databaseFilePath);
+			if (!Directory.Exists(databaseDirectory))
+				Directory.CreateDirectory(databaseDirectory);
 		}
 
 		/// <summary>

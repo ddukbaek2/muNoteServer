@@ -1,12 +1,28 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
 	<PropertyGroup>
+		<Version></Version>
 		<TargetFramework>net8.0</TargetFramework>
 		<Nullable>disable</Nullable>
+		<ProduceReferenceAssembly></ProduceReferenceAssembly>
+		<GeneratePackageOnBuild></GeneratePackageOnBuild>
+		<GenerateDocumentationFile></GenerateDocumentationFile>
+		<PackageId>muNoteServer</PackageId>
+		<Product>$(PackageId)</Product>
+		<Title>$(PackageId)</Title>
+		<AssemblyName>$(PackageId)</AssemblyName>
+		<Company>Crockhead Studio</Company>
+		<Authors>ddukbaek2</Authors>
+		<Description></Description>
+		<RepositoryType>git</RepositoryType>
+		<RepositoryUrl>https://github.com/ddukbaek2/muNoteServer.git</RepositoryUrl>
 		<TieredPGO>true</TieredPGO>
 		<StartupObject>muNoteServer.Program</StartupObject>
 	</PropertyGroup>
+
 	<ItemGroup>
 		<PackageReference Include="Crockhead.Core" Version="0.0.16" />
 		<PackageReference Include="Microsoft.Data.Sqlite" Version="8.*" />
 	</ItemGroup>
+
 </Project>

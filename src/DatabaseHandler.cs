@@ -93,7 +93,7 @@ namespace muNoteServer
 		/// <summary>
 		/// 생성됨.
 		/// </summary>
-		public DatabaseHandler() : base("muNoteServer.db")
+		public DatabaseHandler() : base("./data/local.db")
 		{
 		}
 
