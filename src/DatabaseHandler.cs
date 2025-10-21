@@ -12,7 +12,7 @@ namespace muNoteServer
 		/// 사용자 테이블 생성.
 		/// </summary>
 		public const string CreateUserTableString =
-			@"CREATE TABLE IF NOT EXISTS User (
+			@"CREATE TABLE IF NOT EXISTS UserEntity (
 				UserId TEXT PRIMARY KEY,
 				Name TEXT NOT NULL,
 				Email TEXT NOT NULL,
@@ -25,7 +25,7 @@ namespace muNoteServer
 		/// 작업공간 테이블 생성.
 		/// </summary>
 		public const string CreateWorkspaceTableString =
-			@"CREATE TABLE IF NOT EXISTS Workspace (
+			@"CREATE TABLE IF NOT EXISTS WorkspaceEntity (
 				WorkspaceId TEXT PRIMARY KEY,
 				OwnerUserId TEXT NOT NULL,
 				Name TEXT NOT NULL,
@@ -37,7 +37,7 @@ namespace muNoteServer
 		/// 노트 테이블 생성.
 		/// </summary>
 		public const string CreateNoteTableString =
-			@"CREATE TABLE IF NOT EXISTS Note (
+			@"CREATE TABLE IF NOT EXISTS NoteEntity (
 				NoteId TEXT PRIMARY KEY,
 				OwnerUserId TEXT TEXT NOT NULL,
 				OwnerWorksapceId TEXT NOT NULL,
@@ -54,7 +54,7 @@ namespace muNoteServer
 		/// 노트 테이블에 레코드 추가.
 		/// </summary>
 		public const string InsertNoteTableString =
-			@"INSERT INTO Note (
+			@"INSERT INTO NoteEntity (
 				NoteId,
 				OwnerUserId,
 				OwnerWorkspaceId,
@@ -83,9 +83,9 @@ namespace muNoteServer
 		/// </summary>
 		public const string SearchNoteString =
 			@"WITH RECURSIVE Tree (NoteId, Title, OwnerNoteId) AS (
-				SELECT NoteId, Title, OwnerNoteId FROM Note WHERE NoteId = @root
+				SELECT NoteId, Title, OwnerNoteId FROM NoteEntity WHERE NoteId = @root
 				UNION ALL
-				SELECT n.NoteId, n.Title, n.OwnerNoteId FROM Note n
+				SELECT n.NoteId, n.Title, n.OwnerNoteId FROM NoteEntity n
 				JOIN tree t ON n.OwnerNoteId = t.NoteId
 			)
 			SELECT * FROM Tree;";
